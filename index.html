@@ -150,8 +150,8 @@
             margin-bottom: 10px;
         }
         .ride-detail-item img {
-        width: 500px;  /* Increased from 50px */
-        height: 400px; /* Increased from 50px */
+        width: 500px;  
+        height: 400px; 
         margin-bottom: 15px;
         transition: transform 0.3s ease;
     }
@@ -347,7 +347,6 @@
         </div>
     </div>
 
-    <!-- Add this after your signin modal -->
     <div class="create-account-modal" id="createAccountModal">
         <div class="create-account-content">
             <span class="close-btn" onclick="closeCreateAccountForm()">&times;</span>
@@ -396,8 +395,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            // For demo purposes, showing a default name
-            // In a real app, you would get the user's name from your backend
+            
             const defaultName = "User";
             document.getElementById('userGreeting').textContent = `Hi, ${defaultName}`;
             document.getElementById('userGreeting').style.display = 'inline';
@@ -407,7 +405,7 @@
             alert('Successfully signed in!');
         }
 
-        // Close modal when clicking outside
+       
         window.onclick = function(event) {
             if (event.target == document.getElementById('signinModal')) {
                 closeSigninForm();
@@ -417,7 +415,7 @@
             }
         }
 
-        // Add this to your existing JavaScript
+        
         function openCreateAccountForm() {
             document.getElementById('signinModal').style.display = 'none';
             document.getElementById('createAccountModal').style.display = 'block';
@@ -433,7 +431,7 @@
             const phone = document.getElementById('phoneNumber').value;
             const email = document.getElementById('newEmail').value;
             
-            // Update greeting and show it
+            
             document.getElementById('userGreeting').textContent = `Hi, ${name}`;
             document.getElementById('userGreeting').style.display = 'inline';
             document.querySelector('.signin-btn').style.display = 'none';
@@ -442,13 +440,13 @@
             alert('Account created successfully!');
         }
 
-        // Update the create account link in your signin form
+        
         document.querySelector('.create-account').onclick = function(e) {
             e.preventDefault();
             openCreateAccountForm();
         }
 
-        // Add this to your existing JavaScript
+      
         let notificationsVisible = false;
 
         function toggleNotifications() {
@@ -458,13 +456,13 @@
             notificationsVisible = !notificationsVisible;
             dropdown.style.display = notificationsVisible ? 'block' : 'none';
             
-            // Remove notification badge when notifications are viewed
+            
             if (badge) {
                 badge.remove();
             }
         }
 
-        // Add notification badge on page load
+       
         document.addEventListener('DOMContentLoaded', function() {
             const bellIcon = document.querySelector('.notification-icon');
             const badge = document.createElement('span');
@@ -474,10 +472,10 @@
             bellIcon.appendChild(badge);
         });
 
-        // Update the bell icon click handler
+        
         document.querySelector('.notification-icon').onclick = toggleNotifications;
 
-        // Close notifications when clicking outside
+        
         window.addEventListener('click', function(event) {
             if (!event.target.matches('.notification-icon') && notificationsVisible) {
                 const dropdown = document.getElementById('notificationDropdown');
