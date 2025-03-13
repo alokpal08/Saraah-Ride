@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saraah</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: yellow;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .signi-btn {
+            background: yellow;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .welcome {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 24px;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-gallery img {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
+        .ride-options {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .ride-options input, select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+        .get-fares-btn {
+            background: yellow;
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .comparison {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .comparison-table {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+        .comparison-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            height: 400px;
+            width: 300px;
+            font-size: 20px; /* Increased font size */
+        }
+        .ride-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .cab-class {
+            text-align: center;
+            margin-top: 30px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .social-link {
+            color: yellow;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+        .ride-details {
+            margin: 40px 0;
+            padding-left: 20px;
+        }
+        .ride-detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .ride-detail-item {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+        }
+        .ride-detail-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .ride-detail-item h3, .ride-detail-item h4 {
+            margin-bottom: 10px;
+        }
+        .ride-detail-item img {
+        width: 500px;  /* Increased from 50px */
+        height: 400px; /* Increased from 50px */
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+    }
+    
+    .ride-detail-item img:hover {
+        transform: scale(1.1);
+    }
+    /* Signin Modal Styles */
+    .signin-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .signin-content {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        margin: 15% auto;
+        padding: 20px;
+        width: 300px;
+        border-radius: 10px;
+        position: relative;
+        color: white;
+    }
+
+    #signinForm {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    #signinForm input {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: rgba(64, 43, 43, 0.1);
+        color: white;
+        font-size: 16px;
+    }
+
+    .form-footer {
+        margin-top: 15px;
+        font-size: 20px;
+        color: #aaa;
+    }
+
+    .create-account {
+        color: yellow;
+        text-decoration: none;
+    }
+
+    .create-account:hover {
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Saraah</div>
+        <nav>
+            <a href="#about" class="nav-link">About Us</a>
+            <a href="#safety" class="nav-link">Safety</a>
+            <a href="#rides" class="nav-link">Rides</a>
+        </nav>
+        <div class="header-right">
+            <i class="fas fa-bell notification-icon"></i>
+            <button class="signin-btn" onclick="openSigninForm()">Sign In</button>
+            <span class="user-greeting" id="userGreeting">Hi, </span>
+        </div>
+        <!-- Add this after the notification icon in header-right -->
+        <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-item">
+                <div class="notification-title">Rapido Special Offer!</div>
+                <div class="notification-text">Get 30% discount on all rides today.</div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-title">Ola Holi Celebration</div>
+                <div class="notification-text">New users get their first ride free!</div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="welcome">
+            <h1>Welcome Riders</h1>
+            <h2>To Your Sahi Raah</h2>
+        </section>
+        
+        <section class="image-gallery">
+            <img src="modern-architecture.avif" alt="City at Night">
+            <img src="city-night.png" alt="Beautiful Landscape">
+            <img src="travel-landscape.avif" alt="Modern Architecture">
+        </section>
+
+        <section class="ride-options">
+            <input type="text" id="pickup" placeholder="Enter pickup location">
+            <input type="text" id="destination" placeholder="Enter destination">
+            <input type="date" id="date">
+            <input type="time" id="time">
+            <br>
+            <button class="get-fares-btn" onclick="calculateFares()">Get Fares</button>
+        </section>
+
+        <section class="comparison">
+            <h2>Compare Ride Fares</h2>
+            <div class="comparison-table">
+                <div class="comparison-item">
+                    <img src="rapido-logo.png" alt="Rapido Logo" class="ride-logo">
+                    <h3>Rapido</h3>
+                    <p id="rapido-bike">Bike: 0 INR</p>
+                    <p id="rapido-auto">Auto: 0 INR</p>
+                    <p id="rapido-cab">Cab: 0 INR</p>
+                </div>
+                <div class="comparison-item">
+                    <img src="ola-logo.png" alt="Ola Logo" class="ride-logo">
+                    <h3>Ola</h3>
+                    <p id="ola-bike">Bike: 0 INR</p>
+                    <p id="ola-auto">Auto: 0 INR</p>
+                    <p id="ola-cab">Cab: 0 INR</p>
+                </div>
+                <div class="comparison-item">
+                    <img src="uber-logo.png" alt="Uber Logo" class="ride-logo">
+                    <h3>Uber</h3>
+                    <p id="uber-bike">Bike: 0 INR</p>
+                    <p id="uber-auto">Auto: 0 INR</p>
+                    <p id="uber-cab">Cab: 0 INR</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ride-details">
+            <h2>Essential Ride Details</h2>
+            <div class="ride-detail-row">
+                <div class="ride-detail-item">
+                    <img src="estimated-fare.png" alt="Estimated Fare">
+                    <h3>Estimated Fare</h3>
+                    <p>Compare fares from different ride-hailing services.</p>
+                </div>
+                <div class="ride-detail-item">
+                    <img src="surge-pricing.png" alt="Surge Pricing Alerts">
+                    <h4>Surge Pricing Alerts</h4>
+                    <p>Show when fares are higher than usual.</p>
+                </div>
+            </div>
+            <div class="ride-detail-row">
+                <div class="ride-detail-item">
+                    <img src="eta.png" alt="Estimated Time of Arrival (ETA)">
+                    <h3>Estimated Time of Arrival (ETA)</h3>
+                    <p>Display how long each ride will take to arrive.</p>
+                </div>
+                <div class="ride-detail-item">
+                    <img src="ride-duration.png" alt="Ride Duration">
+                    <h3>Ride Duration</h3>
+                    <p>Show the estimated time to reach the destination.</p>
+                </div>
+            </div>
+            <div class="ride-detail-item">
+                <img src="ride-type.png" alt="Ride Type Comparison">
+                <h3>Ride Type Comparison</h3>
+                <p>Compare different ride categories (e.g., Economy, Premium, Pool).</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/itz_alokpal/" class="social-link">
+                <i class="fab fa-instagram"></i>
+                <span class="social-handle">@saraah_rides</span>
+            </a>
+            <a href="https://x.com/alokp5491" class="social-link">
+                <i class="fab fa-twitter"></i>
+                <span class="social-handle">@saraah_rides</span>
+            </a>
+        </div>
+    </footer>
+    
+    <div class="signin-modal" id="signinModal">
+        <div class="signin-content">
+            <span class="close-btn" onclick="closeSigninForm()">&times;</span>
+            <h2>Sign In</h2>
+            <form id="signinForm" onsubmit="handleSignin(event)">
+                <input type="email" id="email" placeholder="Enter your Email" required>
+                <input type="password" id="password" placeholder="Enter your Password" required>
+                <button type="submit" class="submit-btn">Sign In</button>
+                <p class="form-footer">Don't have an account? <a href="#" class="create-account">Create Account</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add this after your signin modal -->
+    <div class="create-account-modal" id="createAccountModal">
+        <div class="create-account-content">
+            <span class="close-btn" onclick="closeCreateAccountForm()">&times;</span>
+            <h2 class="form-title">Create Account</h2>
+            <form id="createAccountForm" onsubmit="handleCreateAccount(event)">
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+                <input type="tel" id="phoneNumber" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+                <input type="email" id="newEmail" placeholder="Enter your email" required>
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function calculateFares() {
+            const pickup = document.getElementById('pickup').value;
+            const destination = document.getElementById('destination').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            if (pickup && destination && date && time) {
+                document.getElementById('rapido-bike').innerText = 'Bike: 50 INR';
+                document.getElementById('ola-bike').innerText = 'Bike: 71 INR';
+                document.getElementById('uber-bike').innerText = 'Bike: 70 INR';
+                document.getElementById('rapido-cab').innerText = 'Cab: 110 INR';
+                document.getElementById('ola-cab').innerText = 'Cab: 138 INR';
+                document.getElementById('ola-auto').innerText = 'Auto: 58 INR';
+                document.getElementById('uber-auto').innerText = 'Auto: 63 INR';
+                document.getElementById('rapido-auto').innerText = 'Auto: 55 INR';
+                document.getElementById('uber-cab').innerText = 'Cab: 121 INR';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        function openSigninForm() {
+            document.getElementById('signinModal').style.display = 'block';
+        }
+
+        function closeSigninForm() {
+            document.getElementById('signinModal').style.display = 'none';
+        }
+
+        function handleSignin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // For demo purposes, showing a default name
+            // In a real app, you would get the user's name from your backend
+            const defaultName = "User";
+            document.getElementById('userGreeting').textContent = `Hi, ${defaultName}`;
+            document.getElementById('userGreeting').style.display = 'inline';
+            document.querySelector('.signin-btn').style.display = 'none';
+            
+            closeSigninForm();
+            alert('Successfully signed in!');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('signinModal')) {
+                closeSigninForm();
+            }
+            if (event.target == document.getElementById('createAccountModal')) {
+                closeCreateAccountForm();
+            }
+        }
+
+        // Add this to your existing JavaScript
+        function openCreateAccountForm() {
+            document.getElementById('signinModal').style.display = 'none';
+            document.getElementById('createAccountModal').style.display = 'block';
+        }
+
+        function closeCreateAccountForm() {
+            document.getElementById('createAccountModal').style.display = 'none';
+        }
+
+        function handleCreateAccount(event) {
+            event.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const email = document.getElementById('newEmail').value;
+            
+            // Update greeting and show it
+            document.getElementById('userGreeting').textContent = `Hi, ${name}`;
+            document.getElementById('userGreeting').style.display = 'inline';
+            document.querySelector('.signin-btn').style.display = 'none';
+            
+            closeCreateAccountForm();
+            alert('Account created successfully!');
+        }
+
+        // Update the create account link in your signin form
+        document.querySelector('.create-account').onclick = function(e) {
+            e.preventDefault();
+            openCreateAccountForm();
+        }
+
+        // Add this to your existing JavaScript
+        let notificationsVisible = false;
+
+        function toggleNotifications() {
+            const dropdown = document.getElementById('notificationDropdown');
+            const badge = document.querySelector('.notification-badge');
+            
+            notificationsVisible = !notificationsVisible;
+            dropdown.style.display = notificationsVisible ? 'block' : 'none';
+            
+            // Remove notification badge when notifications are viewed
+            if (badge) {
+                badge.remove();
+            }
+        }
+
+        // Add notification badge on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const bellIcon = document.querySelector('.notification-icon');
+            const badge = document.createElement('span');
+            badge.className = 'notification-badge';
+            badge.textContent = '2';
+            bellIcon.style.position = 'relative';
+            bellIcon.appendChild(badge);
+        });
+
+        // Update the bell icon click handler
+        document.querySelector('.notification-icon').onclick = toggleNotifications;
+
+        // Close notifications when clicking outside
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.notification-icon') && notificationsVisible) {
+                const dropdown = document.getElementById('notificationDropdown');
+                dropdown.style.display = 'none';
+                notificationsVisible = false;
+            }
+        });
+    </script>
+</body>
+</html>
